@@ -1,0 +1,23 @@
+﻿[currencies]
+CNY
+CNF
+
+[domain]
+cinapay.com
+
+[accounts]
+rf3cySRsQVjpTSMeQnHYsrdUqLKicFb8fx
+
+[warmwallets]
+rUBJSUTZRniy9Kpg4ZPKXFQHB5o19ZTFtM
+
+[hotwallets]
+# CNY
+r4AULAPvfiewfHf6ut6uqpmmQ5C4RekAwA
+# CNF
+rhpKCGNh2euH7Cr1Bv1ewW4F8QSKvYPAeJ
+
+[fees]
+Deposit: 0
+Withdrawal: 0.3%
+IOU transfer: 0
