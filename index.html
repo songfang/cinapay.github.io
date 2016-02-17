@@ -1,41 +1,319 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+<html ng-controller="AppCtrl">
+  <head>
+    <title ng-bind="pageTitle">Ripple Charts</title>
+    <link rel="icon" type="image/png" href="assets/images/favicon.png"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <!-- D3 needs this -->
+    <meta charset="utf-8">
 
-    <title>Cinapay支付系统 - 基于Ripple区块链技术的分布式支付系统</title>
-</head>
+    <!-- social media tags -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@ripple">
+    <meta name="twitter:title" content="Ripple Charts">
+    <meta name="twitter:description" content="Ripple Network Data Visualization.">
+    <meta name="twitter:creator" content="@ripple">
+    <meta name="twitter:image:src" content="">
+    <meta property="og:title" content="Ripple Charts" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https:/ripplecharts.com" />
+    <meta property="og:image" content="" />
+    <meta property="og:description" content="Ripple Network Data Visualization.">
 
-<body>
-<header>
-    <div class="inner">
-        <h1>Cinapay</h1>
-        <h2>基于Ripple区块链技术的分布式支付系统。通过此系统任何人及机构可以发行货币、积分、债权、股权等IOUs并提供流动性，使这些IOUs可以瞬时、免费和自由的流转。</h2>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <script>
+      
+      MIXPANEL   = "REPLACEME";
+      API        = "REPLACEME";
+      GA_ACCOUNT = "";
+      GA_ID      = "";
+    </script>
+
+    <!-- compiled CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/ripplecharts-0.0.1.css" />
+
+    <!-- compiled JavaScript -->
+    <script type="text/javascript" src="vendor/snapjs/snap.js"></script>
+    <script type="text/javascript" src="vendor/angular/angular.js"></script>
+    <script type="text/javascript" src="vendor/angular-touch/angular-touch.js"></script>
+    <script type="text/javascript" src="vendor/angular-snap/angular-snap.js"></script>
+    <script type="text/javascript" src="vendor/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script type="text/javascript" src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
+    <script type="text/javascript" src="vendor/angular-ui-utils/modules/route/route.js"></script>
+    <script type="text/javascript" src="vendor/underscore/underscore.js"></script>
+    <script type="text/javascript" src="vendor/moment/moment.js"></script>
+    <script type="text/javascript" src="vendor/store/dist/store2.js"></script>
+    <script type="text/javascript" src="vendor/modernizr/modernizr.js"></script>
+    <script type="text/javascript" src="vendor/d3/d3.js"></script>
+    <script type="text/javascript" src="vendor/jquery/jquery.js"></script>
+    <script type="text/javascript" src="vendor/jquery-ui/jquery-ui.js"></script>
+    <script type="text/javascript" src="vendor/jscrollpane/script/jquery.mousewheel.js"></script>
+    <script type="text/javascript" src="vendor/jscrollpane/script/jquery.jscrollpane.js"></script>
+    <script type="text/javascript" src="vendor/chartjs/Chart.js"></script>
+    <script type="text/javascript" src="vendor/ddslick/jquery.ddslick.min.js"></script>
+    <script type="text/javascript" src="vendor/json-formatter/dist/json-formatter.js"></script>
+    <script type="text/javascript" src="vendor/lodash/lodash.js"></script>
+    <script type="text/javascript" src="deps/jquery.selectbox.min.js"></script>
+    <script type="text/javascript" src="deps/jquery.inview.js"></script>
+    <script type="text/javascript" src="deps/onResize.js"></script>
+    <script type="text/javascript" src="deps/ripple.js"></script>
+    <script type="text/javascript" src="deps/ripple-orderbook.js"></script>
+    <script type="text/javascript" src="deps/offersExercisedListener.js"></script>
+    <script type="text/javascript" src="src/app/accounts/accounts.js"></script>
+    <script type="text/javascript" src="src/app/active/active.js"></script>
+    <script type="text/javascript" src="src/app/app.js"></script>
+    <script type="text/javascript" src="src/app/graph/graph.js"></script>
+    <script type="text/javascript" src="src/app/history/history.js"></script>
+    <script type="text/javascript" src="src/app/history/history_templates.js"></script>
+    <script type="text/javascript" src="src/app/landing/landing.js"></script>
+    <script type="text/javascript" src="src/app/manage-currencies/manage-currencies.js"></script>
+    <script type="text/javascript" src="src/app/manage-gateways/manage-gateways.js"></script>
+    <script type="text/javascript" src="src/app/markets/markets.js"></script>
+    <script type="text/javascript" src="src/app/metrics/metrics.js"></script>
+    <script type="text/javascript" src="src/app/multimarkets/multimarkets.js"></script>
+    <script type="text/javascript" src="src/app/trade-volume/trade-volume.js"></script>
+    <script type="text/javascript" src="src/app/transactions/transactions.js"></script>
+    <script type="text/javascript" src="src/app/value/value.js"></script>
+    <script type="text/javascript" src="src/common/activeAccounts.js"></script>
+    <script type="text/javascript" src="src/common/apiHandler.js"></script>
+    <script type="text/javascript" src="src/common/capChart.js"></script>
+    <script type="text/javascript" src="src/common/chordDirective.js"></script>
+    <script type="text/javascript" src="src/common/dropdowns.js"></script>
+    <script type="text/javascript" src="src/common/gateways.js"></script>
+    <script type="text/javascript" src="src/common/graph.js"></script>
+    <script type="text/javascript" src="src/common/jsonToCSV.js"></script>
+    <script type="text/javascript" src="src/common/lineChart.js"></script>
+    <script type="text/javascript" src="src/common/matrixFactory.js"></script>
+    <script type="text/javascript" src="src/common/multimarket.js"></script>
+    <script type="text/javascript" src="src/common/nameService.js"></script>
+    <script type="text/javascript" src="src/common/orderBook.js"></script>
+    <script type="text/javascript" src="src/common/priceChart.js"></script>
+    <script type="text/javascript" src="src/common/statusCheck.js"></script>
+    <script type="text/javascript" src="src/common/totalAccounts.js"></script>
+    <script type="text/javascript" src="src/common/totalHistory.js"></script>
+    <script type="text/javascript" src="src/common/tradeFeed.js"></script>
+    <script type="text/javascript" src="src/common/transactionFeed.js"></script>
+    <script type="text/javascript" src="src/common/txsplain.js"></script>
+    <script type="text/javascript" src="src/common/valueSummary.js"></script>
+    <script type="text/javascript" src="src/config.js"></script>
+    <script type="text/javascript" src="templates-common.js"></script>
+    <script type="text/javascript" src="templates-app.js"></script>
+
+  <!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"===e.location.protocol?"https:":"http:")+'//cdn.mxpnl.com/libs/mixpanel-2.2.min.js';f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f);b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==
+typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");for(g=0;g<i.length;g++)f(c,i[g]);
+b._i.push([a,e,d])};b.__SV=1.2}})(document,window.mixpanel||[]);
+mixpanel.init(MIXPANEL);</script><!-- end Mixpanel -->
+
+  </head>
+  <body ng-class="theme">
+    <div id="loading">
+      <img class="loader" src="assets/images/rippleThrobber.png"/>
     </div>
-</header>
-
-<div id="content-wrapper">
-    <div class="inner clearfix">
-        <section id="main-content">
-            <h3>关于Cinapay</h3>
-            <p>数字货币的发展突飞猛进，比特币背后的区块链技术得到前所未有的重视，Ripple开放协议是区块链技术一个非常炫的实现。Cinapay推进Ripple协议在中国地区的应用，以解决积分、债券、股权等IOUs的发行、兑换及流通。同时Cinapay也是人民币（CNY）的网关。</p>
-            <p>Cinapay也会为其他有兴趣参与到数字货币工程的个人或组织免费提供技术支持，以帮助发行货币、积分、债权、股权等现金等价物。</p>
-
-            <h3>Cinapay网关</h3>
-            <p>CNY（Chinese Yuan，人民币）网关地址：rf3cySRsQVjpTSMeQnHYsrdUqLKicFb8fx。通过Cinapay的人民币网关可以将CNY与USD、EUR、JPY、CAD、AUD等货币免费进行兑换。</p>
-            <p>CNF（Cinapay Funds）网关地址：rf3cySRsQVjpTSMeQnHYsrdUqLKicFb8fx。CNF（Cinapay Funds）是Cinapay的发展基金，以发展过程中获得的CNY及其他组织的积分、债券、股权等作为储备，通过持有CNF享有控制Cinapay的权利。</p>
-        </section>
+    <div id="maintenance">
+      <div class="logo"></div>
+      <h3>This site is under maintenance.</h3>
+      <div class="message"></div>
     </div>
-</div>
+    <div class="header">
+      <div class="banner-wrap">
+        <div class="banner"></div>
+      </div>
+      <div class="wrapper">
+        <i class="nav-toggle mobile_only" snap-toggle>
+          <img src="assets/images/menu.svg"/>
+        </i>
+        <a href="#/" ui-route="/" class="logo" snap-close></a>
+        <status-check></status-check>
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="category">
+              <a href="#/markets" snap-close>Markets  <span class="caret"></span></a>
+                <div class="sub_wrapper">
+                  <ul class="subnav">
+                    <li ui-route="/markets(/.+)?" ng-class="{active:$uiRoute !== false}">
+                      <a href="#/markets" snap-close>Live Chart</a>
+                    </li>
+                    <li ui-route="/multimarkets" ng-class="{active:$uiRoute !== false}">
+                      <a href="#/multimarkets" snap-close>Multi Markets</a>
+                    </li>
+                    <li ui-route="/active_accounts" ng-class="{active:$uiRoute !== false}">
+                      <a href="#/active_accounts" snap-close>Active Accounts</a>
+                    </li>
+                    <li ui-route="/trade-volume" ng-class="{active:$uiRoute !== false}">
+                      <a href="#/trade-volume" snap-close>Trade Volume</a>
+                    </li>
+                  </ul>
+              </div>
+            </li>
+            <li class="category">
+              <a href="#/value" snap-close>Network  <span class="caret"></span></a>
+              <div class="sub_wrapper">
+              <ul class="subnav">
+                <li ui-route="/value" ng-class="{active:$uiRoute !== false}">
+                  <a href="#/value" snap-close>Value Trends</a>
+                </li>
+                <li ui-route="/history" ng-class="{active:$uiRoute !== false}">
+                  <a href="#/history" snap-close>Historical Volume</a>
+                </li>
+                <li ui-route="/metrics" ng-class="{active:$uiRoute !== false}">
+                  <a href="#/metrics" snap-close>Metrics</a>
+                </li>
+              </ul>
+            </div>
+            </li>
+            <li class="category">
+              <a href="#/graph" snap-close>Accounts  <span class="caret"></span></a>
+              <div class="sub_wrapper">
+              <ul class="subnav">
+                <li ui-route="/graph(/.+)?" ng-class="{active:$uiRoute !== false}">
+                  <a href="#/graph" snap-close>Account Explorer</a>
+                </li>
+                <li ui-route="/accounts" ng-class="{active:$uiRoute !== false}">
+                  <a href="#/accounts" snap-close>Accounts Created</a>
+                </li>
+              </ul>
+            </div>
+            </li>
+            <li class="category">
+              <a href="#/transactions" snap-close ui-route="/transactions(/.+)?">Transactions</a>
+            </li>
+            <li class="category color_picker">
+              <a><img title="Toggle Light/Dark themes" class="toggle_theme" ng-click="toggleTheme()" src="assets/icons/icn_brightness.svg"></a>
+            </li>
+            <li class="category help">
+              <a id="helpButton_new" ng-click="showHelp = !showHelp">
+                <img class="more_info" src="assets/icons/icn_info.svg" title="More info"/>
+              </a>
+             </li>
 
-<a href="https://github.com/cinapay" class="button"><small>View on</small> GitHub</a>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    </div>
+    <div snap-drawer>
+      <div class="banner-pad"></div>
+      <ul class="nav">
+        <li class="top">
+        </li>
+        <li class="page">
+          <ul>
+            <li ui-route="/" ng-class="{active:$uiRoute}">
+              <a href="#/" snap-close>Dashboard</a>
+            </li>
+          </ul>
+        </li>
+        <li class="category">
+          <a href="#/markets" snap-close><img src="assets/icons/999_markets.svg">Markets</a>
+        </li>
+        <li class="page">
+          <ul>
+            <li ui-route="/markets(/.+)?" ng-class="{active:$uiRoute !== false}">
+              <a href="#/markets" snap-close>Live Chart</a>
+            </li>
+            <li ui-route="/multimarkets" ng-class="{active:$uiRoute !== false}">
+              <a href="#/multimarkets" snap-close>Multi Markets</a>
+            </li>
+            <li ui-route="/active_accounts" ng-class="{active:$uiRoute !== false}">
+              <a href="#/active_accounts" snap-close>Active Accounts</a>
+            </li>
+            <li ui-route="/trade-volume" ng-class="{active:$uiRoute !== false}">
+              <a href="#/trade-volume" snap-close>Trade Volume</a>
+            </li>
+          </ul>
+        </li>
+        <li class="category">
+          <a href="#/value" snap-close><img src="assets/icons/999_network.svg">Network</a>
+        </li>
+        <li class="page">
+          <ul>
+            <li ui-route="/value" ng-class="{active:$uiRoute !== false}">
+              <a href="#/value" snap-close>Value Trends</a>
+            </li>
+            <li ui-route="/history" ng-class="{active:$uiRoute !== false}">
+              <a href="#/history" snap-close>Historical Volume</a>
+            </li>
+            <li ui-route="/metrics" ng-class="{active:$uiRoute !== false}">
+              <a href="#/metrics" snap-close>Metrics</a>
+            </li>
+          </ul>
+        </li>
+        <li class="category">
+          <a href="#/graph" snap-close><img src="assets/icons/999_accounts.svg">Accounts</a>
+        </li>
+        <li class="page">
+          <ul>
+            <li ui-route="/graph(/.+)?" ng-class="{active:$uiRoute !== false}">
+              <a href="#/graph" snap-close>Account Explorer</a>
+            </li>
+            <li ui-route="/accounts" ng-class="{active:$uiRoute !== false}">
+              <a href="#/accounts" snap-close>Accounts Created</a>
+            </li>
+          </ul>
+        </li>
+        <li class="category">
+          <a href="#/transactions" snap-close><img src="assets/images/flip.svg"/>Transactions</a>
+        </li>
+        <li class="category color_picker">
+          <a class="toggle_theme_mobile" ng-click="toggleTheme()"><img src="assets/icons/icn_brightness.svg">Light / Dark</a>
+        </li>
+        <li class="category"><div id="helpButton_new_mobile" ng-click="showHelp = !showHelp"><span><img src="assets/icons/icn_info.svg" title="More info"></span> Info</div></li>
+      </ul>
+    </div>
 
-</body>
+    <div snap-content class="snap-content" snap-options="snapOptions">
+      <div class="banner-pad"></div>
+      <div class="headerPad"></div>
+      <div ui-view="main"></div>
+      <div class="footerPad"></div>
+
+      <footer class="footer">
+        <div class="footerInner container">
+          Ripple Charts is built and maintained by Ripple, based on data from the Ripple Network.
+          <div class="disclaimer">
+            Information is provided "as is" and solely as an informative resource.
+            Ripple Charts is not a trading advisor. Data may be delayed or incorrect.
+            Ripple reserves the right not to include
+            transactions in Ripple Charts that it believes are not bona fide, e.g., wash sales
+            where there is no change in beneficial ownership.
+          </div>
+          <div class="links">
+            <a href="https://rippletrade.com" target="_blank">Ripple Trade</a>
+            &middot;
+            <a href="https://ripple.com/blog" target="_blank">Blog</a>
+            &middot;
+            <a href="https://ripple.com" target="_blank">Ripple.com</a>
+            &middot;
+            <a href="https://ripple.com/privacy-policy/" target="_blank">Privacy Policy</a>
+            &middot;
+            <a href="https://ripple.com/terms-of-use/" target="_blank">Terms of Service</a>
+            &middot;
+            <a href="https://github.com/ripple/ripplecharts-frontend" target="_blank">Github</a>
+          </div>
+
+          <small><a style="display:none" href="">v0.0.1</a></small>
+        </div>
+      </footer>
+    </div>
+    </div>
+  </body>
+  <script>
+    if (GA_ACCOUNT && GA_ID) {
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', GA_ACCOUNT, GA_ID);
+      ga('require', 'displayfeatures');
+
+    } else {
+      ga = function(){};
+    }
+
+  </script>
 </html>
+
