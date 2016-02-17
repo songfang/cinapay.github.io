@@ -12,11 +12,6 @@ Options = {
   range     : {name: "1d"},
 
   ripple    : {
-    trace   : false,
-    servers: [
-      { host: 's-west.ripple.com', port: 443, secure: true },
-      { host: 's-east.ripple.com', port: 443, secure: true }
-    ],
-    connection_offset: 0
+    "server": "wss://s1.ripple.com:443"
   }
 }
