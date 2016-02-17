@@ -1,6 +1,6 @@
 /* config vars must be global */
 
-//API      = "" //moved to deployment.environments.json;
+API      = "https://data.ripple.com/v2" //moved to deployment.environments.json;
 //MIXPANEL = "" //moved to deployment.environments.json;
 
 Options = {
@@ -12,6 +12,12 @@ Options = {
   range     : {name: "1d"},
 
   ripple    : {
-    "server": "wss://s1.ripple.com:443"
+    trace   : false,
+    trusted : false,
+    servers: [
+      { host: 's-west.ripple.com', port: 443, secure: true },
+      { host: 's-east.ripple.com', port: 443, secure: true }
+    ],
+    connection_offset: 0
   }
 }
