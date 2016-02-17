@@ -1,6 +1,6 @@
 /* config vars must be global */
 
-API      = "https://data.ripple.com/v2" //moved to deployment.environments.json;
+//API      = "" //moved to deployment.environments.json;
 //MIXPANEL = "" //moved to deployment.environments.json;
 
 Options = {
