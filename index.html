@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-controller="AppCtrl">
   <head>
-    <title ng-bind="pageTitle">Ripple Charts</title>
+    <title ng-bind="pageTitle">Cinapay - 瑞波币钱包|Ripple网关</title>
     <link rel="icon" type="image/png" href="assets/images/favicon.png"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -130,55 +130,71 @@ mixpanel.init(MIXPANEL);</script><!-- end Mixpanel -->
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="category">
-              <a href="#/markets" snap-close>Markets  <span class="caret"></span></a>
+              <a href="/download" snap-close>钱包下载  <span class="caret"></span></a>
+              <div class="sub_wrapper">
+                <ul class="subnav">
+                  <li ui-route="/markets(/.+)?" ng-class="{active:$uiRoute !== false}">
+                    <a href="/download/cinapay-win32-0.0.1.zip" snap-close>cinapay-win32-0.0.1</a>
+                  </li>
+                  <li ui-route="/multimarkets" ng-class="{active:$uiRoute !== false}">
+                    <a href="/download/cinapay-osx64-0.0.1.zip" snap-close>cinapay-osx64-0.0.1</a>
+                  </li>
+                  <li ui-route="/active_accounts" ng-class="{active:$uiRoute !== false}">
+                    <a href="#/download/cinapay-linux32-0.0.1.zip" snap-close>cinapay-linux32-0.0.1</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="category">
+              <a href="#/markets" snap-close>行情  <span class="caret"></span></a>
                 <div class="sub_wrapper">
                   <ul class="subnav">
                     <li ui-route="/markets(/.+)?" ng-class="{active:$uiRoute !== false}">
-                      <a href="#/markets" snap-close>Live Chart</a>
+                      <a href="#/markets" snap-close>实时行情</a>
                     </li>
                     <li ui-route="/multimarkets" ng-class="{active:$uiRoute !== false}">
-                      <a href="#/multimarkets" snap-close>Multi Markets</a>
+                      <a href="#/multimarkets" snap-close>自选行情</a>
                     </li>
                     <li ui-route="/active_accounts" ng-class="{active:$uiRoute !== false}">
-                      <a href="#/active_accounts" snap-close>Active Accounts</a>
+                      <a href="#/active_accounts" snap-close>活跃账户</a>
                     </li>
                     <li ui-route="/trade-volume" ng-class="{active:$uiRoute !== false}">
-                      <a href="#/trade-volume" snap-close>Trade Volume</a>
+                      <a href="#/trade-volume" snap-close>交易量</a>
                     </li>
                   </ul>
               </div>
             </li>
             <li class="category">
-              <a href="#/value" snap-close>Network  <span class="caret"></span></a>
+              <a href="#/value" snap-close>全网  <span class="caret"></span></a>
               <div class="sub_wrapper">
               <ul class="subnav">
                 <li ui-route="/value" ng-class="{active:$uiRoute !== false}">
-                  <a href="#/value" snap-close>Value Trends</a>
+                  <a href="#/value" snap-close>资金走势</a>
                 </li>
                 <li ui-route="/history" ng-class="{active:$uiRoute !== false}">
-                  <a href="#/history" snap-close>Historical Volume</a>
+                  <a href="#/history" snap-close>历史走势</a>
                 </li>
                 <li ui-route="/metrics" ng-class="{active:$uiRoute !== false}">
-                  <a href="#/metrics" snap-close>Metrics</a>
+                  <a href="#/metrics" snap-close>各项指标</a>
                 </li>
               </ul>
             </div>
             </li>
             <li class="category">
-              <a href="#/graph" snap-close>Accounts  <span class="caret"></span></a>
+              <a href="#/graph" snap-close>账户  <span class="caret"></span></a>
               <div class="sub_wrapper">
               <ul class="subnav">
                 <li ui-route="/graph(/.+)?" ng-class="{active:$uiRoute !== false}">
-                  <a href="#/graph" snap-close>Account Explorer</a>
+                  <a href="#/graph" snap-close>账户查询</a>
                 </li>
                 <li ui-route="/accounts" ng-class="{active:$uiRoute !== false}">
-                  <a href="#/accounts" snap-close>Accounts Created</a>
+                  <a href="#/accounts" snap-close>账户统计</a>
                 </li>
               </ul>
             </div>
             </li>
             <li class="category">
-              <a href="#/transactions" snap-close ui-route="/transactions(/.+)?">Transactions</a>
+              <a href="#/transactions" snap-close ui-route="/transactions(/.+)?">流水</a>
             </li>
             <li class="category color_picker">
               <a><img title="Toggle Light/Dark themes" class="toggle_theme" ng-click="toggleTheme()" src="assets/icons/icn_brightness.svg"></a>
