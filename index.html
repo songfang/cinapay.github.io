@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html ng-controller="AppCtrl">
   <head>
-    <title ng-bind="pageTitle">Cinapay - 瑞波币钱包|Ripple网关</title>
+    <title ng-bind="pageTitle">瑞波币钱包|XRP行情|Ripple网关|CNY网关 - Cinapay</title>
     <link rel="icon" type="image/png" href="assets/images/favicon.png"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Ripple,XRP,瑞波币,人民币网关,CNY" />
+    <meta name="description" content="Cinapay基于Ripple开源项目，通过此网络机构可以发行货币、积分、债权、股权等IOUs，一些关键网关为这些有价物提供流动性，使得各类货币、积分等可以瞬时、免费、自由地流转。" />
 
     <!-- D3 needs this -->
     <meta charset="utf-8">
@@ -221,63 +223,63 @@ mixpanel.init(MIXPANEL);</script><!-- end Mixpanel -->
         <li class="page">
           <ul>
             <li ui-route="/" ng-class="{active:$uiRoute}">
-              <a href="#/" snap-close>Dashboard</a>
+              <a href="#/" snap-close>仪表盘</a>
             </li>
           </ul>
         </li>
         <li class="category">
-          <a href="#/markets" snap-close><img src="assets/icons/999_markets.svg">Markets</a>
+          <a href="#/markets" snap-close><img src="assets/icons/999_markets.svg">行情</a>
         </li>
         <li class="page">
           <ul>
             <li ui-route="/markets(/.+)?" ng-class="{active:$uiRoute !== false}">
-              <a href="#/markets" snap-close>Live Chart</a>
+              <a href="#/markets" snap-close>实时行情</a>
             </li>
             <li ui-route="/multimarkets" ng-class="{active:$uiRoute !== false}">
-              <a href="#/multimarkets" snap-close>Multi Markets</a>
+              <a href="#/multimarkets" snap-close>自选行情</a>
             </li>
             <li ui-route="/active_accounts" ng-class="{active:$uiRoute !== false}">
-              <a href="#/active_accounts" snap-close>Active Accounts</a>
+              <a href="#/active_accounts" snap-close>活跃账户</a>
             </li>
             <li ui-route="/trade-volume" ng-class="{active:$uiRoute !== false}">
-              <a href="#/trade-volume" snap-close>Trade Volume</a>
+              <a href="#/trade-volume" snap-close>交易量</a>
             </li>
           </ul>
         </li>
         <li class="category">
-          <a href="#/value" snap-close><img src="assets/icons/999_network.svg">Network</a>
+          <a href="#/value" snap-close><img src="assets/icons/999_network.svg">全网</a>
         </li>
         <li class="page">
           <ul>
             <li ui-route="/value" ng-class="{active:$uiRoute !== false}">
-              <a href="#/value" snap-close>Value Trends</a>
+              <a href="#/value" snap-close>资金走势</a>
             </li>
             <li ui-route="/history" ng-class="{active:$uiRoute !== false}">
-              <a href="#/history" snap-close>Historical Volume</a>
+              <a href="#/history" snap-close>历史走势</a>
             </li>
             <li ui-route="/metrics" ng-class="{active:$uiRoute !== false}">
-              <a href="#/metrics" snap-close>Metrics</a>
+              <a href="#/metrics" snap-close>各项指标</a>
             </li>
           </ul>
         </li>
         <li class="category">
-          <a href="#/graph" snap-close><img src="assets/icons/999_accounts.svg">Accounts</a>
+          <a href="#/graph" snap-close><img src="assets/icons/999_accounts.svg">账户</a>
         </li>
         <li class="page">
           <ul>
             <li ui-route="/graph(/.+)?" ng-class="{active:$uiRoute !== false}">
-              <a href="#/graph" snap-close>Account Explorer</a>
+              <a href="#/graph" snap-close>账户查询</a>
             </li>
             <li ui-route="/accounts" ng-class="{active:$uiRoute !== false}">
-              <a href="#/accounts" snap-close>Accounts Created</a>
+              <a href="#/accounts" snap-close>账户统计</a>
             </li>
           </ul>
         </li>
         <li class="category">
-          <a href="#/transactions" snap-close><img src="assets/images/flip.svg"/>Transactions</a>
+          <a href="#/transactions" snap-close><img src="assets/images/flip.svg"/>流水</a>
         </li>
         <li class="category color_picker">
-          <a class="toggle_theme_mobile" ng-click="toggleTheme()"><img src="assets/icons/icn_brightness.svg">Light / Dark</a>
+          <a class="toggle_theme_mobile" ng-click="toggleTheme()"><img src="assets/icons/icn_brightness.svg">开灯 / 关灯</a>
         </li>
         <li class="category"><div id="helpButton_new_mobile" ng-click="showHelp = !showHelp"><span><img src="assets/icons/icn_info.svg" title="More info"></span> Info</div></li>
       </ul>
@@ -291,26 +293,20 @@ mixpanel.init(MIXPANEL);</script><!-- end Mixpanel -->
 
       <footer class="footer">
         <div class="footerInner container">
-          Ripple Charts is built and maintained by Ripple, based on data from the Ripple Network.
+          Cinapay CNY网关：rf3cySRsQVjpTSMeQnHYsrdUqLKicFb8fx
           <div class="disclaimer">
-            Information is provided "as is" and solely as an informative resource.
-            Ripple Charts is not a trading advisor. Data may be delayed or incorrect.
-            Ripple reserves the right not to include
-            transactions in Ripple Charts that it believes are not bona fide, e.g., wash sales
-            where there is no change in beneficial ownership.
+            网站相关数据均来自瑞波网络，仅供参考。提供钱包源码和编译版，支持Windows\OSX\Linux。
           </div>
           <div class="links">
-            <a href="https://rippletrade.com" target="_blank">Ripple Trade</a>
+            <a href="http://cinapay.com/cinapay-client-desktop" target="_blank">钱包</a>
             &middot;
-            <a href="https://ripple.com/blog" target="_blank">Blog</a>
+            <a>充值</a>
+            &middot;
+            <a>提现</a>
             &middot;
             <a href="https://ripple.com" target="_blank">Ripple.com</a>
             &middot;
-            <a href="https://ripple.com/privacy-policy/" target="_blank">Privacy Policy</a>
-            &middot;
-            <a href="https://ripple.com/terms-of-use/" target="_blank">Terms of Service</a>
-            &middot;
-            <a href="https://github.com/ripple/ripplecharts-frontend" target="_blank">Github</a>
+            <a href="https://github.com/cinapay" target="_blank">Github</a>
           </div>
 
           <small><a style="display:none" href="">v0.0.1</a></small>

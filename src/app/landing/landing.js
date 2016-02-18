@@ -133,13 +133,13 @@ angular.module( 'ripplecharts.landing', [
     var ex = {rate:$scope.valueRate, currency:$scope.valueCurrency};
 
     if ($scope.metricDetail == 'issuedValue') {
-      $scope.metricDetailTitle = "Issued Value";
+      $scope.metricDetailTitle = "流通量";
       donut.load(issuedValueXRP, ex);
     } else if ($scope.metricDetail == 'paymentVolume') {
-      $scope.metricDetailTitle = "Payment Volume (last 24 hours)";
+      $scope.metricDetailTitle = "支付量(24小时)";
       donut.load(paymentVolumeXRP, ex);
     } else if ($scope.metricDetail == 'tradeVolume') {
-      $scope.metricDetailTitle = "Trade Volume (last 24 hours)";
+      $scope.metricDetailTitle = "交易量(24小时)";
       donut.load(tradeVolumeXRP, ex);
     }
   });

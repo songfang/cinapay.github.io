@@ -73,8 +73,8 @@ angular.element(document).ready(function() {
       if (ga) ga('send', 'pageview', toState.name);
 
       if ( angular.isDefined( toState.data.pageTitle ) )
-           $scope.pageTitle = toState.data.pageTitle + ' | Ripple Charts' ;
-      else $scope.pageTitle = "Ripple Charts"
+           $scope.pageTitle = toState.data.pageTitle + ' | 瑞波币钱包|XRP行情|Ripple网关|CNY网关 - Cinapay' ;
+      else $scope.pageTitle = "瑞波币钱包|XRP行情|Ripple网关|CNY网关 - Cinapay"
 
     });
 

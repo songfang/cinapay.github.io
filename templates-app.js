@@ -268,23 +268,24 @@ angular.module("landing/landing.tpl.html", []).run(["$templateCache", function($
     "<div>\n" +
     "  <div class=\"main container landing\">\n" +
     "    <div class=\"helpbox\" ng-class=\"{showHelp : showHelp}\">\n" +
-    "      <h3>Welcome to Ripple Charts</h3>\n" +
+    "      <h3>Welcome to Cinapay</h3>\n" +
     "      <p>\n" +
-    "        This charting site was built by Ripple to provide live and historical data about\n" +
-    "        the Ripple network. This site is open for anyone to use, alter and embed.  The source\n" +
-    "        code is available <a href=\"https://github.com/ripple/ripplecharts-frontend\" target=\"_blank\">here</a>.\n" +
+    "        Cinapay基于Ripple开源项目，致力于为中文地区用户提供更友好的版本，促进Ripple协议在中文地区的发展。\n" +
+    "        Ripple使用区块链技术公开交易总账，使得任何人无法伪造交易，通过此网络机构可以发行货币、积分、债权、股权等IOUs。\n" +
+    "        通过一些类似银行的网关节点为这些有价物提供流动性，使得各类货币、积分等可以瞬时、免费、自由地流转。\n" +
+    "        <a href=\"https://github.com/cinapay\" target=\"_blank\">项目源码</a>.\n" +
     "      </p>\n" +
     "    </div>\n" +
     "    <div class=\"row\">\n" +
     "      <div class=\"col-md-6 stats\">\n" +
     "        <h5>\n" +
-    "          Ripple Network Stats\n" +
+    "          全网统计\n" +
     "          <select id=\"valueCurrency\" class=\"valueCurrencySelect\"></select>\n" +
     "          <span class=\"valueRateDisplay\" ng-bind=\"valueRateDisplay\"></span>\n" +
     "        </h5>\n" +
     "        <ul>\n" +
     "          <li>\n" +
-    "            <label>XRP Capitalization:</label>\n" +
+    "            <label>XRP总市值:</label>\n" +
     "            <div class=\"stat\">\n" +
     "              <span ng-show=\"valueRate\" ng-bind=\"xrpCapitalization\"></span>\n" +
     "              <img  ng-hide=\"xrpCapitalization\" src=\"assets/images/rippleThrobber.png\" class=\"loader\"/>\n" +
@@ -292,46 +293,46 @@ angular.module("landing/landing.tpl.html", []).run(["$templateCache", function($
     "            <div class=\"details\"></div>\n" +
     "          </li>\n" +
     "          <li>\n" +
-    "            <label>Issued Value:</label>\n" +
+    "            <label>流通量:</label>\n" +
     "            <div class=\"stat\">\n" +
     "              <span ng-show=\"valueRate\" ng-bind=\"issuedValue\"></span>\n" +
     "              <img  ng-hide=\"issuedValue\" src=\"assets/images/rippleThrobber.png\" class=\"loader\"/>\n" +
     "            </div>\n" +
     "            <div class=\"details\">\n" +
     "              <div ng-show=\"issuedValue && issuedValue != ' '\" ng-click=\"metricDetail='issuedValue'\" ng-class=\"{selected : metricDetail == 'issuedValue' }\">\n" +
-    "                Detail\n" +
+    "                详图\n" +
     "                <img src=\"assets/images/triangle.svg\"/>\n" +
     "              </div>\n" +
     "            </div>\n" +
     "          </li>\n" +
     "          <li>\n" +
-    "            <label>24hr Payment Volume:</label>\n" +
+    "            <label>24小时支付量:</label>\n" +
     "            <div class=\"stat\">\n" +
     "              <span ng-show=\"valueRate\" ng-bind=\"paymentVolume\"></span>\n" +
     "              <img  ng-hide=\"paymentVolume\" src=\"assets/images/rippleThrobber.png\" class=\"loader\"/>\n" +
     "            </div>\n" +
     "            <div class=\"details\">\n" +
     "              <div ng-show=\"paymentVolume && paymentVolume != ' '\" ng-click=\"metricDetail='paymentVolume'\" ng-class=\"{selected : metricDetail == 'paymentVolume' }\">\n" +
-    "                Detail\n" +
+    "                详图\n" +
     "                <img src=\"assets/images/triangle.svg\"/>\n" +
     "              </div>\n" +
     "            </div>\n" +
     "          </li>\n" +
     "          <li>\n" +
-    "            <label>24hr Trade Volume:</label>\n" +
+    "            <label>24小时交易量:</label>\n" +
     "            <div class=\"stat\">\n" +
     "              <span ng-show=\"valueRate\" ng-bind=\"tradeVolume\"></span>\n" +
     "              <img  ng-hide=\"tradeVolume\" src=\"assets/images/rippleThrobber.png\" class=\"loader\"/>\n" +
     "            </div>\n" +
     "            <div class=\"details\">\n" +
     "              <div ng-show=\"tradeVolume && tradeVolume != ' '\" ng-click=\"metricDetail='tradeVolume'\" ng-class=\"{selected : metricDetail == 'tradeVolume' }\">\n" +
-    "                Detail\n" +
+    "                详图\n" +
     "                <img src=\"assets/images/triangle.svg\"/>\n" +
     "              </div>\n" +
     "            </div>\n" +
     "          </li>\n" +
     "          <li>\n" +
-    "            <label>Total XRP:</label>\n" +
+    "            <label>XRP总量:</label>\n" +
     "            <div class=\"stat\">\n" +
     "              <span ng-bind=\"totalCoins\"></span>\n" +
     "              <img ng-hide=\"totalCoins\" src=\"assets/images/rippleThrobber.png\" class=\"loader\"/>\n" +
@@ -339,7 +340,7 @@ angular.module("landing/landing.tpl.html", []).run(["$templateCache", function($
     "            <div class=\"details\"></div>\n" +
     "          </li>\n" +
     "          <li>\n" +
-    "            <label>Ledger #:</label>\n" +
+    "            <label>分类账 #:</label>\n" +
     "            <div class=\"stat\">\n" +
     "              <span ng-bind=\"ledgerIndex\"></span>\n" +
     "              <img ng-hide=\"ledgerIndex\" src=\"assets/images/rippleThrobber.png\" class=\"loader\"/>\n" +
@@ -347,7 +348,7 @@ angular.module("landing/landing.tpl.html", []).run(["$templateCache", function($
     "            <div class=\"details\"></div>\n" +
     "          </li>\n" +
     "          <li>\n" +
-    "            <label># of Ripple accounts:</label>\n" +
+    "            <label># 账户数:</label>\n" +
     "            <div class=\"stat\">\n" +
     "              <span ng-bind=\"totalAccounts\"></span>\n" +
     "              <img ng-hide=\"totalAccounts\" src=\"assets/images/rippleThrobber.png\" class=\"loader\"/>\n" +
@@ -364,7 +365,7 @@ angular.module("landing/landing.tpl.html", []).run(["$templateCache", function($
     "        <div id=\"metricDetail\"></div>\n" +
     "      </div>\n" +
     "    </div>\n" +
-    "    <h5>Top Markets</h5>\n" +
+    "    <h5>热门网关</h5>\n" +
     "    <div id=\"topMarkets\"></div>\n" +
     "  </div>\n" +
     "</div>\n" +
